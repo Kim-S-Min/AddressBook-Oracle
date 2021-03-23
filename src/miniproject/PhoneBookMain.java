@@ -15,15 +15,18 @@ public class PhoneBookMain {
 		List<PhoneBookVo> list = dao.getList();
 		Iterator<PhoneBookVo> it = list.iterator();
 		
+		System.out.println("<1.명단>");
 		while(it.hasNext()) {
 			PhoneBookVo vo = it.next();
-			System.out.printf("%d, %s, %s, %s%n", vo.getId(), vo.getName(), vo.getHp(), vo.getTel());
+			System.out.printf("%d. %s %s %s%n", vo.getId(), vo.getName(), vo.getHp(), vo.getTel());
+			
 		}
 	}
 	
 	
 	// 등록
 	public static void insertPhoneBook() {
+		System.out.println("<2.등록>");
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("이름: ");
 		String name = scanner.next();
@@ -38,12 +41,12 @@ public class PhoneBookMain {
 		boolean success = dao.insert(vo);
 		
 		System.out.println("[등록" + (success ? "되었습니다.]": "되지않았습니다.]"));
-		scanner.close();
 	}
 	
 	
 	//	삭제
 	public static void deletePhoneBook() {
+		System.out.println("<3.삭제>");
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("번호: ");
 		long phone_bookId = scanner.nextLong();
@@ -52,12 +55,12 @@ public class PhoneBookMain {
 		boolean success = dao.delete(phone_bookId);
 		
 		System.out.println("[삭제" + (success ? "되었습니다.]": "되지않았습니다.]"));
-		scanner.close();
 	}
 	
 	
 	//	검색
 	public static void searchPhoneBook() {
+		System.out.println("<4.검색>");
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("이름: ");
 		String keyword = scanner.next();
@@ -71,6 +74,5 @@ public class PhoneBookMain {
 			PhoneBookVo vo = it.next();
 			System.out.println(vo);
 		}
-		scanner.close();
 	}	
 }
